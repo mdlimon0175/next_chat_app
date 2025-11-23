@@ -13,7 +13,7 @@ export default function PageLayout({ children }) {
             <div>
                 <Navbar />
             </div>
-            <main className="max-w-7xl mx-auto ">
+            <main className="max-w-7xl mx-auto">
                 <DefaultPageLayout>
                     {children}
                 </DefaultPageLayout>
