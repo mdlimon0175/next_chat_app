@@ -16,7 +16,7 @@ export default function Conversations() {
         <Suspense>
             <ConversationsWrapper>
                 <ConversationsHeader />
-                <div className="h-screen text-charcoaltext dark:text-dawn">
+                <div className="min-h-screen text-charcoaltext dark:text-dawn">
                     <Suspense>
                         <RenderConversations />
                     </Suspense>
