@@ -1,22 +1,56 @@
-/*
-// Title: App chat component header.
-// Description: Application chat component header.
-// Author: Kiam Khan Limon
-// Author email: mdlimon0175@gmail.com
-// version: 1.0
-// Date: 7/10/2024
-*/
+"use client"
+import { useRouter } from "next/navigation";
 
-import { getPartnerAvatar } from '../utils/Helper';
-import { RoundUserImage } from '../utils/Images'
+import { defaultMediaQueryString } from "../utils/Helper";
+import ArrowLeftIcon from "../utils/ui/icons/ArrowLeftIcon";
+import VideoCameraIcon from "../utils/ui/icons/VideoCameraIcon";
+import useConversationIdParam from "hooks/useConversationIdParam";
 
-export default function ChatHeader({ partnerInfo }) {
-  const { email, username } = partnerInfo || {};
+export default function ChatHeader({ children }) {
+    return (
+        <div className="flex h-[65px] justify-between items-center p-3 border-b c_border">
+            <div className="flex items-center space-x-3">
+                <ChatBackButton />
+                <div className="flex space-x-3 items-center">
+                    {children}
+                </div>
+            </div>
+            <ChatVideoCallButton />
+        </div>
+    );
+}
 
-  return (
-    <div className="flex h-[65px] items-center p-3 border-b border-gray-300">
-      <RoundUserImage image={getPartnerAvatar(email, 40)} />
-      <span className="conversation_span font-bold">{username}</span>
-    </div>
-  )
+function ChatBackButton() {
+    const { push } = useRouter();
+    return (
+        <div className="flex sm:hidden items-center justify-center">
+            <button
+                type="button"
+                className="outline-none border-none"
+                onClick={() => push("/")}
+            >
+                <ArrowLeftIcon stroke={3} />
+            </button>
+        </div>
+    )
+}
+
+function ChatVideoCallButton() {
+    const { push } = useRouter();
+    const conversation_id = useConversationIdParam();
+
+    return (
+        <div className="size-10 bg-purple rounded-full">
+            <button 
+                type="button"
+                aria-label="Video call"
+                onClick={() => push(`/call/outgoing/${conversation_id}?${defaultMediaQueryString()}`)}
+                className="flex items-center justify-center size-full"
+            >
+                <VideoCameraIcon
+                    className={"size-4 text-dawn"}
+                />
+            </button>
+        </div>
+    )
 }

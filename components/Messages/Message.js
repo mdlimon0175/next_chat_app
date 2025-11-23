@@ -1,20 +1,13 @@
-/*
-// Title: App single message
-// Description: Single message component.
-// Author: Kiam Khan Limon
-// Author email: mdlimon0175@gmail.com
-// version: 1.0
-// Date: 7/10/2024
-*/
+import moment from "moment";
 
-export default function Message({ user_type, message, title }) {
-  // we will check message user_id & auth user id for align.
+export default function Message({ data, is_sender }) {
+    const { message, sent_at } = data || {};
 
-  return (
-    <li title={title} className={`flex ${user_type === "sender" ? "justify-end" : "justify-start"}`}>
-      <div className="message_body">
-        <span className="block">{message}</span>
-      </div>
-    </li>
-  )
+    return (
+        <div className={`flex pb-3 ${is_sender ? "justify-end" : "justify-start"}`}>
+            <div title={moment(sent_at).fromNow()} className={`${is_sender ? "message_sender" : "message_receiver"} message_body`}>
+                <span className="block">{message}</span>
+            </div>
+        </div>
+    );
 }
