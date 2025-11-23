@@ -1,24 +1,33 @@
-/*
-// Title: App auth pages header
-// Description: Auth page header.
-// Author: Kiam Khan Limon
-// Author email: mdlimon0175@gmail.com
-// version: 1.0
-// Date: 4/30/2024
-*/
+import Image from "next/image";
 
-import { usePathname } from "next/navigation";
-import { authPageTitle } from "../utils/Helper";
+import Logo from "@public/logo.png";
+import LogoDark from "@public/logo_dark.png";
 
-export default function AuthHeader() {
-  const pathname = usePathname();
+export default function AuthHeader({ title }) {
+    return (
+        <div>
+            <div className="relative size-20 mx-auto">
+                {/* Light mode logo */}
+                <Image
+                    fill
+                    sizes="80px"
+                    src={LogoDark.src}
+                    alt="Logo Dark"
+                    className="w-full object-contain dark:hidden"
+                />
 
-  return (
-    <div>
-      {/* logo */}
-      <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-        {authPageTitle(pathname)}
-      </h2>
-    </div>
-  )
+                {/* Dark mode logo */}
+                <Image
+                    fill
+                    sizes="80px"
+                    src={Logo.src}
+                    alt="Logo"
+                    className="w-full object-contain hidden dark:block"
+                />
+            </div>
+            <h1 className="mt-6 text-center text-3xl font-extrabold text-charcoaltext dark:text-dawn">
+                {title}
+            </h1>
+        </div>
+    );
 }

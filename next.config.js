@@ -4,10 +4,9 @@ const nextConfig = {
   swcMinify: true,
   images: {
     remotePatterns: [
-      {hostname: 'localhost'},
-      {hostname: 'gravatar.com'}
+      {hostname: 'localhost'}
     ]
-  }
+  },
 }
 
 module.exports = nextConfig

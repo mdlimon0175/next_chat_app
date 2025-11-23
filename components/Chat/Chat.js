@@ -1,47 +1,68 @@
-/*
-// Title: App chat component.
-// Description: chat child components render by this component.
-// Author: Kiam Khan Limon
-// Author email: mdlimon0175@gmail.com
-// version: 1.0
-// Date: 7/10/2024
-*/
-
-'use client'
-import { useGetMessagesQuery } from "@/lib/features/messages/messagesApi";
-import MessageForm from "../Form/MessageForm";
-import ChatHeader from "../Header/ChatHeader";
-import Messages from "../Messages/Messages";
+"use client";
+import dynamic from "next/dynamic";
+import { useEffect, useMemo } from "react";
 import { useSelector } from "react-redux";
+import { notFound, useRouter } from "next/navigation";
+
 import Blank from "./Blank";
+import { conversationPartnerInfo } from "../utils/Helper";
+const ChatHeader = dynamic(() => import("../Header/ChatHeader"));
+const Messages = dynamic(() => import("../Messages/Messages"));
+const MessageForm = dynamic(() => import("../Form/MessageForm"));
+const RoundUserImage = dynamic(() => import("../utils/ui/images/RoundUserImage"));
+import { useGetConversationQuery } from "@/lib/features/conversations/conversationsApi";
 
 export default function Chat({ conversation_id }) {
-  const { user: { email } = {} } = useSelector(state => state.auth) || { user: {} };
-  const { data, isLoading, isError, error } = useGetMessagesQuery(conversation_id);
-  const { total, data: messages } = data || {};
+    const router = useRouter();
+    const auth_id = useSelector((state) => state.auth?.user?.id) || null;
+    const { data, isLoading, isError, error } = useGetConversationQuery(conversation_id);
+    const partnerInfo = useMemo(() => {
+        if(!isLoading && !isError && data) {
+            return conversationPartnerInfo(data.data.participants, auth_id);
+        }
+        return null;
+    }, [auth_id, isLoading, isError, data]);
 
-  const renderChatbody = () => {
-    if(isLoading && !isError) {
-      return (
-        <Blank message={"loading..."}/>
-      )
-    } else if(!isLoading && isError) {
-      return <Blank message={"Something went wront! Try again later."} />
-    }
-    if(messages && messages.length === 0) {
-      return <Blank message={"Invalid request!"}/>
-    }
+    useEffect(() => {
+        if(isError) {
+            if(error.status === 401) {
+                router.push("/auth/login");
+            }
+            if(error.status === 404) {
+                notFound();
+            }
+        }
+    }, [isError, error, router])
 
-    const { sender, receiver } = messages[0];
-    const partnerInfo = sender.email === email ? receiver : sender;
+    const renderChatbody = useMemo(() => {
+        if (isLoading) {
+            return <Blank message={"loading..."} />;
+        } else if (isError) {
+            return <Blank message={error.data.message} />;
+        }
+
+        return (
+            <>
+                <ChatHeader>
+                    <RoundUserImage image={partnerInfo.partner_profile_icon} />
+                    <PartnerUsernameText username={partnerInfo.username} />
+                </ChatHeader>
+                <Messages key={conversation_id} conversation_id={conversation_id} />
+                <MessageForm
+                    partner_id={partnerInfo.id}
+                    conversation_id={conversation_id}
+                />
+            </>
+        );
+    }, [isLoading, isError, error, partnerInfo, conversation_id])
+
+    return renderChatbody;
+}
+
+function PartnerUsernameText({username}) {
     return (
-      <>
-        <ChatHeader partnerInfo={partnerInfo} />
-        <Messages data={messages} total={total} conversation_id={conversation_id} />
-        <MessageForm partnerInfo={partnerInfo} />
-      </>
+        <span className="conversation_span text-charcoaltext dark:text-dawn font-semibold">
+            {username}
+        </span>
     )
-  }
-
-  return renderChatbody();
 }

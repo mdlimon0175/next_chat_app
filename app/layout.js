@@ -3,25 +3,28 @@
 // Description: Application layout will render from here.
 // Author: Kiam Khan Limon
 // Author email: mdlimon0175@gmail.com
-// version: 1.0
-// Date: 4/30/2024
+// version: 2.0
+// Date: 03/20/2025
 */
 
-import LayoutProvider from "@/components/Layout/LayoutProvider";
 import "./globals.css";
+import appConfig from "@/config/config";
+import LayoutProvider from "@/components/Layout/LayoutProvider";
 
 export const metadata = {
-  title: `${process.env.NEXT_APP_NAME}`
+    title: {
+        default: `${appConfig.app_name}`,
+        template: `${appConfig.app_name} - %s`,
+    },
+    description: `${appConfig.app_name} is a real-time chat & calling app with webRTC and socket.io`
 }
 
 export default function RootLayout({ children }) {
-  return (
-    <html lang="en">
-      <body>
-        <LayoutProvider>
-          {children}
-        </LayoutProvider>
-      </body>
-    </html>
-  )
+    return (
+        <html lang="en">
+            <body className="bg-dawn dark:bg-midnight overflow-hidden">
+                <LayoutProvider>{children}</LayoutProvider>
+            </body>
+        </html>
+    );
 }
