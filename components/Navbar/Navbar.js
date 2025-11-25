@@ -12,7 +12,7 @@ export default function Navbar() {
         <nav className="sticky top-0 left-0 z-40 bg-purple/70 dark:bg-electric/80">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex justify-between items-center">
-                    <div className="w-20 h-20 flex items-center">
+                    <div className="size-[60px] sm:size-20 flex items-center">
                         <Link href={"/"} className="relative size-full border-none outline-none">
                             <Image
                                 fill
@@ -23,9 +23,9 @@ export default function Navbar() {
                             />
                         </Link>
                     </div>
-                    {/* <div> */}
+                    <div>
                         <LogoutButton />
-                    {/* </div> */}
+                    </div>
                 </div>
             </div>
         </nav>

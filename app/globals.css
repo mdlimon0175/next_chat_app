@@ -7,6 +7,10 @@ input::-ms-clear {
         display: none;
 }
 
+.parent_screen_without_nav_h {
+    @apply sm:h-[calc(100vh_-_80px)] h-[calc(100vh_-_60px)]
+}
+
 .call_end_btn {
     @apply size-12 border-none outline-none rounded-full bg-red-600 text-white hover:bg-red-700 disabled:bg-red-400 disabled:cursor-not-allowed
 }

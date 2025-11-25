@@ -8,7 +8,7 @@ import useConversationIdParam from "hooks/useConversationIdParam";
 
 export default function ChatHeader({ children }) {
     return (
-        <div className="flex h-[65px] justify-between items-center p-3 border-b c_border">
+        <div className="flex justify-between items-center p-3 border-b c_border">
             <div className="flex items-center space-x-3">
                 <ChatBackButton />
                 <div className="flex space-x-3 items-center">

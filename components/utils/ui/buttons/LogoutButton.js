@@ -29,10 +29,10 @@ export default function LogoutButton() {
             type="button"
             onClick={logout}
             disabled={isLoading}
-            className={"text-softgray dark:text-charcoaltext flex items-center"}
+            className={"text-softgray text-sm sm:text-base dark:text-charcoaltext flex items-center"}
         >
             <span className="mr-1">
-                <LogoutIcon className="text-softgray dark:text-charcoaltext size-6" />
+                <LogoutIcon className="text-softgray dark:text-charcoaltext size-5 sm:size-6" />
             </span>
             Log out
         </button>

@@ -14,10 +14,8 @@ export function ConversationLoading() {
 
 export function Loading() {
     return (
-        <div className="bg-dawn dark:bg-midnight text-charcoal dark:text-dawn flex items-center justify-center h-screen">
-            <p className="font-bold text-lg">
-                loading... Please wait
-            </p>
-        </div>
+        <p className="absolute z-[100] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 font-bold text-lg text-charcoal dark:text-dawn">
+            loading... Please wait
+        </p>
     )
 }

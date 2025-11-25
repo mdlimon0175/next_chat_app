@@ -41,7 +41,7 @@ export default function Messages({ conversation_id }) {
     }
 
     return (
-        <div className="w-full py-6 h-[calc(100vh_-_213px)]">
+        <div className="w-full py-6">
             {renderMessages()}
         </div>
     );

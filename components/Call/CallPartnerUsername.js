@@ -16,7 +16,7 @@ export default function CallPartnerUsername() {
                         <span
                             className={`${
                                 audio ? "scale-0" : "scale-100"
-                            } absolute rotate-[145deg] w-5 h-[1.5px] top-1/2 left-1/2 -translate-x-1/2 bg-dawn`}
+                            } absolute rotate-[145deg] w-5 h-[1.5px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-dawn`}
                         ></span>
                     </span>
                 </span>

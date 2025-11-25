@@ -31,7 +31,7 @@ export default function Page({ searchParams }) {
     return (
         <div className={`${
                 conversation_id ? "col-span-12" : "hidden"
-            } sm:block sm:col-span-8 md:col-span-9 bg-white dark:bg-midnight`}
+            } relative sm:block sm:col-span-8 md:col-span-9 bg-white dark:bg-midnight`}
         >
             {renderComponent()}
         </div>

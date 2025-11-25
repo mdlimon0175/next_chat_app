@@ -13,10 +13,12 @@ export default function PageLayout({ children }) {
             <div>
                 <Navbar />
             </div>
-            <main className="max-w-7xl mx-auto">
-                <DefaultPageLayout>
-                    {children}
-                </DefaultPageLayout>
+            <main className="max-w-7xl mx-auto parent_screen_without_nav_h">
+                <div className="relative grid grid-cols-12 h-full">
+                    <DefaultPageLayout>
+                        {children}
+                    </DefaultPageLayout>
+                </div>
             </main>
         </>
     )

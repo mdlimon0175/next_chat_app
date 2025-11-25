@@ -55,7 +55,7 @@ export default function VideoControlButton() {
                     <span
                         className={`${
                             video_muted || streamError ? "scale-100" : "scale-0"
-                        } ${streamError ? "bg-dawn" : "dark:bg-dawn bg-charcoaltext"} absolute rotate-[145deg] w-7 h-[1.5px] top-1/2 left-1/2 -translate-x-1/2`}
+                        } ${streamError ? "bg-dawn" : "dark:bg-dawn bg-charcoaltext"} absolute rotate-[145deg] w-7 h-[1.5px] top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2`}
                     ></span>
                 </span>
             </button>
