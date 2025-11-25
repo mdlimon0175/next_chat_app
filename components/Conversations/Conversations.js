@@ -16,7 +16,7 @@ export default function Conversations() {
         <Suspense>
             <ConversationsWrapper>
                 <ConversationsHeader />
-                <div className="min-h-screen text-charcoaltext dark:text-dawn">
+                <div className="h-[calc(100vh_-_207px)] text-charcoaltext dark:text-dawn">
                     <Suspense>
                         <RenderConversations />
                     </Suspense>
@@ -29,7 +29,7 @@ export default function Conversations() {
 function ConversationsWrapper({ children }) {
     const conversation_id = useConversationIdParam();
     return (
-        <div className={`${conversation_id ? "hidden" : "block"} sm:block col-span-12 sm:col-span-4 md:col-span-3 border-r c_border bg-softgray dark:bg-charcoal default_transition`}>
+        <div className={`${conversation_id ? "hidden" : "block"} sm:block col-span-12 sm:col-span-4 md:col-span-3 sm:border-r c_border bg-softgray dark:bg-charcoal default_transition`}>
             {children}
         </div>
     )

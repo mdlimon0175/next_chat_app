@@ -17,14 +17,14 @@ export default function DefaultPageLayout({ children }) {
     const pageLoading = useDefaultLayout();
 
     return pageLoading ? (
-        <div className="col-span-12">
-            <Loading />
-        </div>
+        <Loading />
     ) : (
-        <div className="grid grid-cols-12 border-x c_border lg:mx-6">
-            <IncomingCallModal />
-            <Conversations />
-            {children}
+        <div className="col-span-full">
+            <div className="grid grid-cols-12 h-full border-x c_border lg:mx-6">
+                <IncomingCallModal />
+                <Conversations />
+                {children}
+            </div>
         </div>
     );
 }

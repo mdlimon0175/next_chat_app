@@ -1,7 +1,5 @@
 export default function Blank({ message }) {
     return (
-        <div className="relative w-full overflow-y-hiddeen h-[calc(100vh_-_85px)] flex flex-col items-center justify-center p-5 space-y-5">
-            <div className="text-center text-charcoal dark:text-dawn">{message}</div>
-        </div>
+        <p className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-[100] text-charcoal dark:text-dawn">{message}</p>
     );
 }

@@ -54,7 +54,12 @@ export default function MessageForm({ partner_id, conversation_id }) {
                 </textarea>
 
                 <div>
-                    <button aria-label="Send message" type="submit" disabled={isLoading}>
+                    <button 
+                        type="submit"
+                        disabled={isLoading}
+                        className="flex items-center justify-center"
+                        aria-label="Send message" 
+                    >
                         <FlyingEnvelopeIcon className={"size-6 text-purple/90 dark:text-electric/90"} />
                     </button>
                 </div>

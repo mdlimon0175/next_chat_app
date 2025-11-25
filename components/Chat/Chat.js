@@ -42,7 +42,7 @@ export default function Chat({ conversation_id }) {
         }
 
         return (
-            <>
+            <div className="grid grid-rows-[65px_1fr_auto] h-full">
                 <ChatHeader>
                     <RoundUserImage image={partnerInfo.partner_profile_icon} />
                     <PartnerUsernameText username={partnerInfo.username} />
@@ -52,7 +52,7 @@ export default function Chat({ conversation_id }) {
                     partner_id={partnerInfo.id}
                     conversation_id={conversation_id}
                 />
-            </>
+            </div>
         );
     }, [isLoading, isError, error, partnerInfo, conversation_id])
 

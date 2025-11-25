@@ -22,7 +22,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
     return (
         <html lang="en">
-            <body className="bg-dawn dark:bg-midnight overflow-hidden">
+            <body className="bg-dawn dark:bg-midnight">
                 <LayoutProvider>{children}</LayoutProvider>
             </body>
         </html>
