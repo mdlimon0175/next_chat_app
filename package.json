@@ -9,10 +9,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "@reduxjs/toolkit": "^2.2.3",
     "create-next-app": "^14.2.33",
     "gravatar-url": "^4.0.1",
-    "moment": "^2.30.1",
+    "javascript-time-ago": "^2.6.4",
     "next": "^14.2.33",
     "npm": "^10.9.4",
     "react": "18.2.0",
