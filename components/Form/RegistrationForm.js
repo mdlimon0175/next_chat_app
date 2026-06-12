@@ -1,12 +1,12 @@
 "use client";
 import Link from "next/link";
-import Image from "next/image";
+// import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 import AlertBox from "../utils/ui/alerts/AlertBox";
 import AlertText from "../utils/ui/alerts/AlertText";
-import CloseIcon from "../utils/ui/icons/CloseIcon";
+// import CloseIcon from "../utils/ui/icons/CloseIcon";
 import PasswordInput from "../utils/ui/inputs/PasswordInput";
 import { useRegistrationMutation } from "@/lib/features/auth/authApi";
 import PrimarySubmitButton from "../utils/ui/buttons/PrimarySubmitButton";
@@ -16,7 +16,7 @@ export default function RegistrationForm() {
     const [email, setEmail] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [profilePic, setProfilePic] = useState(null);
+    // const [profilePic, setProfilePic] = useState(null);
     const [confirmPassword, setConfirmPassword] = useState("");
     const [
         registration,
@@ -31,7 +31,7 @@ export default function RegistrationForm() {
         formData.append("username", username);
         formData.append("password", password);
         formData.append("password_confirmation", confirmPassword);
-        formData.append("profile_picture", profilePic);
+        // formData.append("profile_picture", profilePic);
 
         registration({ url: "/registration", data: formData });
     }
@@ -42,7 +42,7 @@ export default function RegistrationForm() {
             setPassword("");
             setUsername("");
             setConfirmPassword("");
-            setProfilePic(null);
+            // setProfilePic(null);
         }
 
         if (data && isSuccess) {
@@ -117,7 +117,7 @@ export default function RegistrationForm() {
                             />
                         ) : null}
                     </div>
-                    <div>
+                    {/* <div>
                         <label className="form_label">Upload Profile Picture</label>
                         {profilePic && profilePic instanceof File && (
                             <div className="flex items-center gap-4 mb-1.5">
@@ -125,6 +125,7 @@ export default function RegistrationForm() {
                                     <Image fill sizes="40px" src={URL.createObjectURL(profilePic)} alt="" />
                                 </div>
                                 <span className="truncate text-sm text-charcoal dark:text-dawn">{profilePic.name}</span>
+                                {/* existing profile picture clear button
                                 <span
                                     title="remove image"
                                     onClick={() => setProfilePic(null)}
@@ -156,7 +157,7 @@ export default function RegistrationForm() {
                                 message={error.data.error["profile_picture"].message} 
                             />
                         ) : null}
-                    </div>
+                    </div> */}
                 </div>
                 <div className="text-end text-sm">
                     <Link href={"/auth/login"} className="form_link">

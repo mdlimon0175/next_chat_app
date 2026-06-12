@@ -12,17 +12,13 @@ import { memo, useMemo } from "react";
 
 import { conversationPartnerInfo } from "../utils/Helper";
 import RoundUserImage from "../utils/ui/images/RoundUserImage";
+import timeAgo from "@/lib/timeAgo/timeAgo";
 
 function Conversation({ data, auth_id, is_active }) {
     const { id, participants, last_message} = data || {};
     const sent_at_from_now = useMemo(() => {
         if(!last_message) return "";
-        const diff = (Date.now() - new Date(last_message.sent_at).getTime()) / 1000;
-        if (diff < 60) return `${Math.floor(diff)}s`;
-        if (diff < 3600) return `${Math.floor(diff / 60)}m`;
-        if (diff < 86400) return `${Math.floor(diff / 3600)}h`;
-        if (diff < 525600) return `${Math.floor(diff / 86400)}d`;
-        return `${Math.floor(diff / 525600)}y`;
+        return timeAgo.format(new Date(last_message.sent_at), "mini");
     }, [last_message])
 
     const {

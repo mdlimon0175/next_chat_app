@@ -26,10 +26,14 @@ module.exports = {
                 amber: "#F59E0B",
                 softred: "#EF4444",
                 charcoaltext: "#111827",
-                graytext: "#6B7280",
+                graytext: "#a0abc0",
                 bordergray: "#D1D5DB",
                 slategray: "#374151"
             },
+            spacing: {
+                "7.5": "1.875rem",
+                "15": "3.75rem"
+            }
         },
     },
     plugins: [require("tailwind-scrollbar")],
